@@ -6,7 +6,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-center items-center h-[60px] w-[100%] bg-blue-100 sticky top-0 mb-4">
+      <nav className="flex justify-center items-center h-[60px] w-[100%] bg-rose-500 text-white sticky top-0 mb-4">
         <div className="flex justify-between items-center w-[80%]">
           <div>
             fake <span>Store</span>
@@ -25,13 +25,29 @@ const Navbar = () => {
                 Categories {">"}
               </button>
               {showCategories && (
-                <ul className="absolute bg-white flex flex-col gap-2 mt-[5px] p-2 shadow-lg rounded-lg">
-                  <Link to={`/category/${"electronics"}`}>Electronics</Link>
-                  <Link to={`/category/${"jewelery"}`}>Jewelery</Link>
-                  <Link to={`/category/${"men's clothing"}`}>
+                <ul className="absolute bg-white text-black flex flex-col gap-2 mt-[5px] p-2 shadow-lg rounded-lg">
+                  <Link
+                    to={`/category/${"electronics"}`}
+                    className="hover:bg-gray-200 px-2 transition-all linear duration-100"
+                  >
+                    Electronics
+                  </Link>
+                  <Link
+                    to={`/category/${"jewelery"}`}
+                    className="hover:bg-gray-200 px-2 transition-all linear duration-100"
+                  >
+                    Jewelery
+                  </Link>
+                  <Link
+                    to={`/category/${"men's clothing"}`}
+                    className="hover:bg-gray-200 px-2 transition-all linear duration-100"
+                  >
                     Men's Clothing
                   </Link>
-                  <Link to={`/category/${"women's clothing"}`}>
+                  <Link
+                    to={`/category/${"women's clothing"}`}
+                    className="hover:bg-gray-200 px-2 transition-all linear duration-100"
+                  >
                     Women's Clothing
                   </Link>
                 </ul>

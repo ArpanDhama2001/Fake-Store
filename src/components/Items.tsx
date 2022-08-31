@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { getAllProductURL } from "../data/api/apiURL";
 
@@ -41,7 +41,7 @@ const Items = () => {
           return (
             <article
               key={item.id}
-              className="flex flex-col gap-4 shadow-lg w-[100%] p-4 rounded-md"
+              className="flex flex-col justify-center gap-4 bg-white shadow-lg w-[100%] h-[350px] p-4 rounded-md"
             >
               <div className="card-head transition-all linear duration-300 group ">
                 <Link to={`/${item.id}`}>
@@ -54,8 +54,8 @@ const Items = () => {
               </div>
               <div className="card-body flex flex-col gap-4">
                 <p className="">
-                  {item.title.length > 35
-                    ? item.title.substring(0, 35) + "..."
+                  {item.title.length > 25
+                    ? item.title.substring(0, 25) + "..."
                     : item.title}
                 </p>
                 <div className="flex justify-between">
@@ -66,8 +66,8 @@ const Items = () => {
                   <p>{item.price}</p>
                 </div>
                 <div className="flex gap-4">
-                  <button className="bg-cyan-500 hover:bg-cyan-600 w-[100%] rounded-md text-white py-[7px] transition-all ease-in-out duration-300">
-                    + Add to Cart
+                  <button className="flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 w-[100%] rounded-md text-white py-[7px] transition-all ease-in-out duration-300">
+                    <FaPlus /> Add to Cart
                   </button>
                 </div>
               </div>
