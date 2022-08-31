@@ -1,20 +1,18 @@
-export const getProduct = {
-  method: "GET",
-  url: "https://my-store2.p.rapidapi.com/catalog/products",
-  params: { limit: "1000" },
-  headers: {
-    "X-RapidAPI-Key": "bbedd09bb2mshe86e77d95268f4ap1402a6jsnff42fc14bb14",
-    "X-RapidAPI-Host": "my-store2.p.rapidapi.com",
-  },
+export const getAllProductURL = () => {
+  return "https://fakestoreapi.com/products";
+};
+export const getProductURL = (id) => {
+  return `https://fakestoreapi.com/products/${id}`;
 };
 
-export const deleteProduct = (id) => {
-  return {
-    method: "DELETE",
-    url: `https://my-store2.p.rapidapi.com/catalog/product/${id}`,
-    headers: {
-      "X-RapidAPI-Key": "bbedd09bb2mshe86e77d95268f4ap1402a6jsnff42fc14bb14",
-      "X-RapidAPI-Host": "my-store2.p.rapidapi.com",
-    },
-  };
+export const getLimitedProducts = () => {
+  return "https://fakestoreapi.com/products/1";
+};
+
+export const getAllCategories = () => {
+  return "https://fakestoreapi.com/products/categories";
+};
+
+export const getInCategory = (category) => {
+  return `https://fakestoreapi.com/products/category/${category}`;
 };
