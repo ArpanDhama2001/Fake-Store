@@ -1,5 +1,11 @@
-const Home = () => {
-  return <h1>Home Page</h1>
-}
+import Items from "../components/Items";
 
-export default Home
+const Home = () => {
+  return (
+    <section className="w-[80%] mx-auto ">
+      <Items />
+    </section>
+  );
+};
+
+export default Home;
