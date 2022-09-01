@@ -1,22 +1,14 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart, remove } from "../features/cartSlice";
 import { FaStar, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { getAllProductURL } from "../data/api/apiURL";
-
-type itemType = {
-  id: number;
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-};
+import { ItemeState } from "../features/cartSlice";
 
 const Items = () => {
+  const dispatch = useDispatch();
+
   const [items, setItems] = useState([]);
   const URL = getAllProductURL();
 
@@ -37,7 +29,7 @@ const Items = () => {
   return (
     <>
       <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center">
-        {items.map((item: itemType) => {
+        {items.map((item: ItemeState) => {
           return (
             <article
               key={item.id}
@@ -66,7 +58,10 @@ const Items = () => {
                   <p>{item.price}</p>
                 </div>
                 <div className="flex gap-4">
-                  <button className="flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 w-[100%] rounded-md text-white py-[7px] transition-all ease-in-out duration-300">
+                  <button
+                    onClick={() => dispatch(addToCart(item))}
+                    className="flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 w-[100%] rounded-md text-white py-[7px] transition-all ease-in-out duration-300"
+                  >
                     <FaPlus /> Add to Cart
                   </button>
                 </div>
