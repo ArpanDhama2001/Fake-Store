@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addToCart, remove } from "../features/cartSlice";
-import { FaStar, FaPlus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
+import { useDispatch } from "react-redux/";
 import { Link } from "react-router-dom";
 import { getAllProductURL } from "../data/api/apiURL";
-import { ItemeState } from "../features/cartSlice";
+import { addToCart, ItemeState } from "../features/cartSlice";
+import Ratings from "./Ratings";
 
 const Items = () => {
   const dispatch = useDispatch();
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<ItemeState[] | []>();
   const URL = getAllProductURL();
 
-  const fetchItems = async () => {
+  const fetchItems = async (): Promise<void> => {
     try {
       const res = await fetch(URL);
       const data = await res.json();
@@ -24,12 +24,13 @@ const Items = () => {
 
   useEffect(() => {
     fetchItems();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center">
-        {items.map((item: ItemeState) => {
+        {items?.map((item: ItemeState): JSX.Element => {
           return (
             <article
               key={item.id}
@@ -51,10 +52,7 @@ const Items = () => {
                     : item.title}
                 </p>
                 <div className="flex justify-between">
-                  <div className="flex gap-2 items-center">
-                    <FaStar className="text-amber-500" />
-                    <p>{item.rating.rate}</p>
-                  </div>
+                  <Ratings rate={item.rating?.rate || 0} />
                   <p>{item.price}</p>
                 </div>
                 <div className="flex gap-4">

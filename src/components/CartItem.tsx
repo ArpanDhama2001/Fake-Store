@@ -1,21 +1,11 @@
 import { useDispatch } from "react-redux";
-import { FaStar } from "react-icons/fa";
-import { remove } from "../features/cartSlice";
+import { ItemeState, remove } from "../features/cartSlice";
+import { FaTimes } from "react-icons/fa";
 import React from "react";
-interface CartItemState {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
+import ItemQty from "./ItemQty";
+import Ratings from "./Ratings";
 
-const QTY = 1;
-
-const CartItem = (props: CartItemState) => {
+const CartItem = (props: ItemeState) => {
   const dispatch = useDispatch();
 
   const handleClick = (id: number) => {
@@ -34,26 +24,28 @@ const CartItem = (props: CartItemState) => {
             className="h-[150px] mx-auto"
           />
         </div>
-        <div className="w-[50%]">
+        <div className="w-[50%] flex flex-col justify-between">
           <p>{props.title}</p>
-          <div className="flex items-center gap-2">
-            <FaStar />
-            <p>{props.rating.rate}</p>
-          </div>
-          <h2 className="">$ {props.price}</h2>
+          <Ratings rate={props.rating.rate} />
+          <button
+            onClick={handleClick(props.id)}
+            className="text-gray-500 flex items-center gap-1"
+          >
+            <span className="relative top-[2px]">
+              <FaTimes />
+            </span>
+            Remove
+          </button>
         </div>
       </div>
       <div className="w-[25%] flex gap-2">
         <div className="w-[50%] flex justify-center">
-          <button className="">{QTY}</button>
+          <button className="">
+            <ItemQty />
+          </button>
         </div>
         <div className="w-[50%]">
-          <button
-            onClick={handleClick(props.id)}
-            className="bg-rose-500 text-white py-2 px-4 rounded-md hover:bg-rose-600"
-          >
-            Remove
-          </button>
+          <h2 className="">$ {props.price}</h2>
         </div>
       </div>
     </div>
