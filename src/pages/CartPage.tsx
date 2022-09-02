@@ -5,6 +5,8 @@ import { ItemeState } from "../features/cartSlice";
 
 const Cartpage = () => {
   const cart = useSelector((state: RootState) => state.cart);
+  // cart.value && localStorage.setItem("Cart", JSON.stringify(cart));
+  // const storedItems: any = JSON.parse(localStorage.getItem("Basket") || "");
 
   return (
     <article className="w-[80%] mx-auto">

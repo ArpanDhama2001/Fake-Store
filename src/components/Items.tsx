@@ -22,6 +22,15 @@ const Items = () => {
     }
   };
 
+  // const storageCart = localStorage.getItem("Basket");
+  // const cart = storageCart ? JSON.parse(storageCart) : [];
+
+  const handleClick = (item: ItemeState): void => {
+    dispatch(addToCart(item));
+    // console.log("cart", cart);
+    // localStorage.setItem("Basket", JSON.stringify(cart.push(item)));
+  };
+
   useEffect(() => {
     fetchItems();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,7 +43,7 @@ const Items = () => {
           return (
             <article
               key={item.id}
-              className="flex flex-col justify-center gap-4 bg-white shadow-lg w-[100%] h-[350px] p-4 rounded-md"
+              className="flex flex-col justify-center gap-4 bg-white shadow-2xl w-[100%] h-[350px] p-4 rounded-md"
             >
               <div className="card-head transition-all linear duration-300 group ">
                 <Link to={`/${item.id}`}>
@@ -57,7 +66,7 @@ const Items = () => {
                 </div>
                 <div className="flex gap-4">
                   <button
-                    onClick={() => dispatch(addToCart(item))}
+                    onClick={() => handleClick(item)}
                     className="flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 w-[100%] rounded-md text-white py-[7px] transition-all ease-in-out duration-300"
                   >
                     <FaPlus /> Add to Cart

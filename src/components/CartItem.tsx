@@ -15,7 +15,7 @@ const CartItem = (props: ItemeState) => {
   };
 
   return (
-    <div className="p-4 flex items-center">
+    <div className="p-4 flex mt-4 items-center bg-white shadow-2xl rounded-3xl">
       <div className="flex w-[75%] gap-4 ">
         <div className="w-[260px]">
           <img
@@ -40,11 +40,9 @@ const CartItem = (props: ItemeState) => {
       </div>
       <div className="w-[25%] flex gap-2">
         <div className="w-[50%] flex justify-center">
-          <button className="">
-            <ItemQty />
-          </button>
+          <ItemQty />
         </div>
-        <div className="w-[50%]">
+        <div className="w-[50%] m-auto">
           <h2 className="">$ {props.price}</h2>
         </div>
       </div>
