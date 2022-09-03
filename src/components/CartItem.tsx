@@ -1,52 +1,59 @@
-import { useDispatch } from "react-redux";
 import { ItemeState, remove } from "../features/cartSlice";
-import { FaTimes } from "react-icons/fa";
+import { FaHeart, FaTrash } from "react-icons/fa";
 import React from "react";
 import ItemQty from "./ItemQty";
 import Ratings from "./Ratings";
+import { useDispatch } from "react-redux";
 
 const CartItem = (props: ItemeState) => {
   const dispatch = useDispatch();
 
-  const handleClick = (id: number) => {
-    return (event: React.MouseEvent) => {
-      dispatch(remove(id));
-    };
-  };
-
   return (
-    <div className="p-4 flex mt-4 items-center bg-white shadow-2xl rounded-3xl">
-      <div className="flex w-[75%] gap-4 ">
-        <div className="w-[260px]">
-          <img
-            src={props.image}
-            alt={props.title}
-            className="h-[150px] mx-auto"
-          />
-        </div>
-        <div className="w-[50%] flex flex-col justify-between">
-          <p>{props.title}</p>
-          <Ratings rate={props.rating.rate} />
-          <button
-            onClick={handleClick(props.id)}
-            className="text-gray-500 flex items-center gap-1"
-          >
-            <span className="relative top-[2px]">
-              <FaTimes />
-            </span>
-            Remove
-          </button>
-        </div>
+    <article className="py-4 flex items-center last:border-none border-b border-gray-200 text-neutral-400 font-secondary">
+      <div className="item-image w-[260px]">
+        <img
+          src={props.image}
+          alt={props.title}
+          className="h-[150px] mx-auto"
+        />
       </div>
-      <div className="w-[25%] flex gap-2">
-        <div className="w-[50%] flex justify-center">
+      <div className="item-body flex flex-grow gap-4 flex-col">
+        <div className="item-body-head pl-4 flex justify-between">
+          <div>
+            <p className="font-secondary text-lg text-neutral-600 text-[18px]">
+              {props.title.substring(0, 20) + "..."}
+            </p>
+            <div className="flex text-base pt-2">
+              <p className="pr-2">$ {props.price}</p>
+              <span className="pl-2 border-l-2 border-stone-100">
+                <Ratings rate={props.rating.rate} />
+              </span>
+            </div>
+          </div>
+          <div className="flex items-start justify-center">
+            <p className="text-black text-xl font-[550] font-primary">
+              ${Math.round(props.qty * props.price * 100) / 100}
+            </p>
+          </div>
+        </div>
+        <div className="item-total flex justify-between items-center pl-4">
           <ItemQty id={props.id} />
-        </div>
-        <div className="w-[50%] m-auto">
-          <h2 className="">$ {props.price}</h2>
+          <div className="flex items-center">
+            <span className="border-r border-neutral-100 flex items-center gap-2 px-2 cursor-pointer hover:cursor-pointer">
+              <FaHeart />
+              <p>Save</p>
+            </span>
+            <span
+              onClick={() => dispatch(remove(props.id))}
+              className="flex gap-2 px-2 items-center cursor-pointer hover:cursor-pointer"
+            >
+              <FaTrash />
+              <p>Delete</p>
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

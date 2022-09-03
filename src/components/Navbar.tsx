@@ -6,7 +6,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-center items-center h-[60px] w-[100%] bg-rose-500 text-white sticky top-0 mb-4">
+      <nav className="flex justify-center items-center h-[60px] w-[100%] bg-primary text-white sticky top-0 mb-4">
         <div className="flex justify-between items-center w-[80%]">
           <div>
             fake <span>Store</span>

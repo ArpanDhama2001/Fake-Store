@@ -68,7 +68,7 @@ const Items = () => {
                 <div className="flex gap-4">
                   <button
                     onClick={() => handleClick(item, item.id)}
-                    className="flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 w-[100%] rounded-md text-white py-[7px] transition-all ease-in-out duration-300"
+                    className="flex items-center justify-center gap-2 bg-accent hover:bg-accentHover w-[100%] rounded-md text-white py-[7px] transition-all ease-in-out duration-300"
                   >
                     <FaPlus /> Add to Cart
                   </button>
