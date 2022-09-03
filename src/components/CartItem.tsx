@@ -40,7 +40,7 @@ const CartItem = (props: ItemeState) => {
       </div>
       <div className="w-[25%] flex gap-2">
         <div className="w-[50%] flex justify-center">
-          <ItemQty />
+          <ItemQty id={props.id} />
         </div>
         <div className="w-[50%] m-auto">
           <h2 className="">$ {props.price}</h2>

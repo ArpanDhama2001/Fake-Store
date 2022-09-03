@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux/";
 import { Link } from "react-router-dom";
 import { getAllProductURL } from "../data/api/apiURL";
-import { addToCart, ItemeState } from "../features/cartSlice";
+import { addToCart, ItemeState, setQty } from "../features/cartSlice";
 import Ratings from "./Ratings";
 
 const Items = () => {
@@ -25,8 +25,9 @@ const Items = () => {
   // const storageCart = localStorage.getItem("Basket");
   // const cart = storageCart ? JSON.parse(storageCart) : [];
 
-  const handleClick = (item: ItemeState): void => {
+  const handleClick = (item: ItemeState, id: number): void => {
     dispatch(addToCart(item));
+    dispatch(setQty(id));
     // console.log("cart", cart);
     // localStorage.setItem("Basket", JSON.stringify(cart.push(item)));
   };
@@ -66,7 +67,7 @@ const Items = () => {
                 </div>
                 <div className="flex gap-4">
                   <button
-                    onClick={() => handleClick(item)}
+                    onClick={() => handleClick(item, item.id)}
                     className="flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 w-[100%] rounded-md text-white py-[7px] transition-all ease-in-out duration-300"
                   >
                     <FaPlus /> Add to Cart
