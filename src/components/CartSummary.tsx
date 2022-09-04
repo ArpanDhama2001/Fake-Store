@@ -1,7 +1,29 @@
-// import { } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
+import { checkPromoCode } from "../utilities/checkPromoCode";
 import { deliveryDate } from "../utilities/deliveryDateCalculator";
+import { totalPrice } from "../utilities/totalPrice";
 
 const CartSummary = () => {
+  const cart = useSelector((state: RootState) => state.cart);
+
+  const [code, setCode] = useState<string>("");
+  let [dis, setDis] = useState<number>(0);
+  let [total, setTotal] = useState<number>(totalPrice());
+
+  const handleClick = () => {
+    var discount: boolean = checkPromoCode(code);
+    discount ? setDis(total * 0.2) : setDis(0);
+
+    setTotal(total - dis);
+    discount ? setCode(code) : setCode("");
+  };
+
+  useEffect(() => {
+    setTotal(totalPrice() - dis);
+  }, [dis, cart]);
+
   return (
     <section className="bg-white p-4 rounded-lg mb-4  font-secondary sm:w-[90%] sm:mx-auto lg:max-w-[30%]">
       <article className="delivery flex flex-col gap-4 border-b border-dashed pb-4 border-neutral-300">
@@ -24,28 +46,43 @@ const CartSummary = () => {
       </article>
 
       <article className="promocode flex flex-col gap-4 border-b border-dashed py-4 border-neutral-300">
-        <div className="border border-solid border-neutral-200 max-w-fit rounded-lg flex justify-between items-center">
+        <div
+          className={`border-solid ${
+            !dis ? "border border-neutral-200" : "border-2 border-green-300"
+          } max-w-fit rounded-lg flex justify-between items-center`}
+        >
           <input
             type="text"
             name="promocode"
+            value={code}
             placeholder="Promocode"
-            className="outline-none py-1 px-2 rounded-lg grow max-w-[70%]"
+            onChange={(e) => setCode(e.target.value)}
+            className={`outline-none py-1 px-2 rounded-lg grow max-w-[70%] `}
           />
-          <button className="px-4 py-[8px] hover:bg-neutral-100 border border-neutral-200 border-r-0 rounded-lg">
+          <button
+            onClick={() => {
+              handleClick();
+            }}
+            className="px-4 py-[8px] hover:bg-neutral-100 border border-neutral-200 border-r-0 rounded-lg"
+          >
             Apply
           </button>
         </div>
-        <h2 className="text-neutral-400 text-sm -mt-3">20% off discount</h2>
+        <h2
+          className={`text-neutral-400 text-sm -mt-3 ${dis ? "" : "hidden"} `}
+        >
+          20% off discount
+        </h2>
       </article>
 
       <article className="subtotal flex flex-col gap-4 border-b border-dashed py-4 border-neutral-300 text-neutral-400">
         <div className="flex justify-between gap-3 text-neutral-600">
           <h2>Subtotal</h2>
-          <h2>$80</h2>
+          <h2>{total}</h2>
         </div>
         <div className="flex justify-between gap-3">
           <h3>Discount</h3>
-          <h3>- $16.19</h3>
+          <h3>- ${dis}</h3>
         </div>
         <div className="flex justify-between gap-3">
           <h3>Delivery</h3>
@@ -56,7 +93,7 @@ const CartSummary = () => {
       <article className="total flex flex-col gap-4 py-4">
         <div className="flex justify-between">
           <h2>Total</h2>
-          <h2>$78.76</h2>
+          <h2>${total}</h2>
         </div>
         <button className="w-full py-[10px] px-4 bg-primary hover:opacity-90 text-white rounded-lg">
           Proceed to checkout
