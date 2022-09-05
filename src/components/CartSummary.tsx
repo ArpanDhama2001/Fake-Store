@@ -31,7 +31,7 @@ const CartSummary = () => {
   };
 
   return (
-    <section className="bg-white p-4 rounded-lg mb-4  font-secondary sm:w-[90%] sm:mx-auto lg:max-w-[30%]">
+    <section className="bg-white p-4 rounded-lg mb-4  font-secondary lg:max-w-[30%]">
       <article className="delivery flex flex-col gap-4 border-b border-dashed pb-4 border-neutral-300">
         <h2 className="text-neutral-600 text-lg">Delivery</h2>
         <div className="bg-secondary border border-solid border-neutral-200 text-lg max-w-fit py-1 text-neutral-600 rounded-lg">
