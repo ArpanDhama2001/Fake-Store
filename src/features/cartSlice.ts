@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import ItemQty from "../components/ItemQty";
 
 export interface ItemeState {
   id: number;

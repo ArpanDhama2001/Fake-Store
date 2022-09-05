@@ -39,10 +39,6 @@ const CartItem = (props: ItemeState) => {
         <div className="item-total flex justify-between items-center pl-4">
           <ItemQty id={props.id} />
           <div className="flex items-center">
-            <span className="border-r border-neutral-100 flex items-center gap-2 px-2 cursor-pointer hover:cursor-pointer">
-              <FaHeart />
-              <p>Save</p>
-            </span>
             <span
               onClick={() => dispatch(remove(props.id))}
               className="flex gap-2 px-2 items-center cursor-pointer hover:cursor-pointer"

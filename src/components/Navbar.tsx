@@ -1,28 +1,47 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { FaAngleDown, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import { RootState } from "../store";
+import { totalItemsInCart } from "../utilities/totalItemsInCart";
 
 const Navbar = () => {
+  const cart = useSelector((state: RootState) => state.cart);
+
   const [showCategories, setShowCategories] = React.useState(false);
+  const [total, setTotal] = React.useState<string>("0");
+  const { pathname } = useLocation();
+
+  React.useEffect(() => {
+    setTotal(totalItemsInCart());
+  }, [cart]);
 
   return (
     <>
-      <nav className="flex justify-center items-center h-[60px] w-[100%] bg-primary text-white sticky top-0 mb-4">
-        <div className="flex justify-between items-center w-[80%]">
-          <div>
-            fake <span>Store</span>
-          </div>
-          <ul className="flex gap-4">
+      <nav className="z-10 flex justify-center items-center h-[60px] w-[100%] bg-primary text-white sticky top-0 mb-4">
+        <div className="flex justify-between items-center w-[80%] font-secondary">
+          <Link to="/" className="text-xl border-y-2 border-white w-[112px]">
+            fake <span className="font-secondary text-2xl">Store</span>
+          </Link>
+          <ul className="flex gap-8 items-center ">
             <li>
-              <Link to="/">Home</Link>
+              <Link
+                to="/"
+                className={` ${
+                  pathname === "/" ? "opacity-100" : "opacity-70"
+                } hover:opacity-100`}
+              >
+                Home
+              </Link>
             </li>
             <li>
               <button
                 onClick={() => {
                   setShowCategories(!showCategories);
                 }}
-                className="relative"
+                className="relative flex items-center gap-1 opacity-70 hover:opacity-100 focus:opacity-100"
               >
-                Categories {">"}
+                Categories <FaAngleDown />
               </button>
               {showCategories && (
                 <ul className="absolute bg-white text-black flex flex-col gap-2 mt-[5px] p-2 shadow-lg rounded-lg">
@@ -54,10 +73,33 @@ const Navbar = () => {
               )}
             </li>
             <li>
-              <button>Login</button>
+              <Link
+                to="/favourite"
+                className={`${
+                  pathname === "/favourite" ? "opacity-100" : "opacity-70"
+                } hover:opacity-100`}
+              >
+                <span className="">
+                  <FaHeart />
+                </span>
+              </Link>
             </li>
-            <li>
-              <Link to="/cart">Cart</Link>
+            <li className="relative group">
+              <Link to="/cart">
+                <div
+                  className={`${
+                    pathname === "/cart" ? "opacity-100" : "opacity-70"
+                  } group-hover:opactiy-100 scale-[140%] `}
+                >
+                  <FaShoppingCart />
+                </div>
+                <span className="absolute -top-4 -right-4 flex items-center justify-center rounded-full bg-accent text-white opacity-100 h-full w-full p-[11px] text-sm">
+                  {total}
+                </span>
+              </Link>
+            </li>
+            <li className="border-[2px] border-neutral-300 py-1 px-2 rounded-lg hover:scale-105 ">
+              <button>Login | Signup</button>
             </li>
           </ul>
         </div>

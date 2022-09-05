@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { RootState } from "../store";
 import { totalPrice, deliveryDate, checkPromoCode } from "../utilities";
+import PrimaryButton from "./PrimaryButton";
 
 const CartSummary = () => {
   const cart = useSelector((state: RootState) => state.cart);
@@ -90,7 +92,7 @@ const CartSummary = () => {
             onClick={() => {
               handleClick();
             }}
-            className="px-4 py-[8px] hover:bg-neutral-100 border border-neutral-200 border-r-0 rounded-lg"
+            className="px-4 py-[8px] hover:bg-neutral-100 border border-neutral-200 border-r-0 rounded-lg active:scale-[98%]"
           >
             Apply
           </button>
@@ -131,12 +133,14 @@ const CartSummary = () => {
               Math.round(deliveryCharge * 100) / 100}
           </h2>
         </div>
-        <button className="w-full py-[10px] px-4 bg-primary hover:opacity-90 text-white rounded-lg">
-          Proceed to checkout
-        </button>
-        <button className="w-full py-[10px] px-4 border border-neutral-200 hover:bg-neutral-100 shadow-sm rounded-lg -mt-2">
-          Continue shopping
-        </button>
+        <div>
+          <PrimaryButton width="full" text="Proceed to checkout" />
+        </div>
+        <Link to="/">
+          <button className="w-full py-[10px] px-4 border border-neutral-200 hover:bg-neutral-100 shadow-sm rounded-lg -mt-2 active:scale-[98%]">
+            Continue shopping
+          </button>
+        </Link>
       </article>
     </section>
   );
