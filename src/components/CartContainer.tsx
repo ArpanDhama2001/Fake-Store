@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 // import { Scrollbars } from "react-custom-scrollbars-2";
 import CartItem from "../components/CartItem";
-import { ItemeState } from "../features/cartSlice";
+import { ItemeState } from "../features/productsSlice";
 import CartSummary from "./CartSummary";
 import EmptyCart from "./EmptyCart";
 
@@ -23,6 +23,7 @@ const CartContainer = () => {
                 price={item.price}
                 rating={item.rating}
                 qty={item.qty}
+                fav={item.fav}
               />
             );
           })

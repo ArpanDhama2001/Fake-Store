@@ -1,18 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export interface ItemeState {
-  id: number;
-  title: string;
-  price: number;
-  category?: string;
-  description?: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-  qty: number;
-}
+import { ItemeState } from "./productsSlice";
 
 export interface CartState {
   value: ItemeState[];

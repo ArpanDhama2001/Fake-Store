@@ -1,5 +1,6 @@
-import { ItemeState, remove } from "../features/cartSlice";
-import { FaHeart, FaTrash } from "react-icons/fa";
+import { remove } from "../features/cartSlice";
+import { ItemeState } from "../features/productsSlice";
+import { FaTrash } from "react-icons/fa";
 import React from "react";
 import ItemQty from "./ItemQty";
 import Ratings from "./Ratings";
