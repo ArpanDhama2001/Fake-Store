@@ -1,27 +1,28 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { ItemeState } from "../features/productsSlice";
-import Ratings from "./Ratings";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { addToCart, setQty } from "../features/cartSlice";
+import Ratings from "./Ratings";
 import PrimaryButton from "./PrimaryButton";
+import { addToFav } from "../features/favouriteSlice";
 
 const Item = (props: ItemeState) => {
   const dispatch = useAppDispatch();
-  const items = useAppSelector((state) => state.products);
-
-  const [clicked, setClicked] = useState<boolean>(false);
+  const products = useAppSelector((state) => state.products);
 
   const requiredItem = (id: number): ItemeState => {
-    // let item: ItemeState[] = items.data.filter((item) => item.id === id);
-    // return item[0];
-    return items.data.filter((item) => item.id === id)[0];
+    let product = products.data.filter((item) => item.id === id)[0];
+    return product;
   };
 
-  const handleClick = (item: ItemeState, id: number): void => {
+  const addToCartClickHandler = (item: ItemeState, id: number): void => {
     dispatch(addToCart(item));
     dispatch(setQty(id));
+  };
+
+  const addToFavClickHandler = (item: ItemeState, id: number): void => {
+    dispatch(addToFav(item));
   };
 
   return (
@@ -36,13 +37,10 @@ const Item = (props: ItemeState) => {
         </Link>
         <span
           onClick={() => {
-            setClicked(!clicked);
+            addToFavClickHandler(requiredItem(props.id), props.id);
           }}
-          className={`z-1 absolute top-6 right-7 ${
-            clicked ? "text-red-500 " : "text-neutral-300"
-          } scale-[140%]  hover:cursor-pointer`}
+          className={`z-1 absolute top-6 right-7 scale-[140%]  hover:cursor-pointer`}
         >
-          {/* {clicked ? <FaHeart /> : <FiHeart />} */}
           <FaHeart />
         </span>
       </div>
@@ -63,7 +61,9 @@ const Item = (props: ItemeState) => {
         </div>
       </div>
       <div
-        onClick={() => handleClick(requiredItem(props.id), props.id)}
+        onClick={() => {
+          addToCartClickHandler(requiredItem(props.id), props.id);
+        }}
         className="flex gap-4"
       >
         <PrimaryButton width="full" text="Add to Cart" />

@@ -23,7 +23,6 @@ const CartContainer = () => {
                 price={item.price}
                 rating={item.rating}
                 qty={item.qty}
-                fav={item.fav}
               />
             );
           })
