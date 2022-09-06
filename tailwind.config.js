@@ -13,6 +13,22 @@ module.exports = {
         accent: "#3F72AF",
         accentHover: "#DBE2EF",
       },
+      animation: {
+        pulse: "pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
+      keyframes: {
+        pulse: {
+          "0%": {
+            opacity: 1,
+          },
+          "50%": {
+            opacity: 0,
+          },
+          "100%": {
+            opacity: 1,
+          },
+        },
+      },
     },
   },
   plugins: [],

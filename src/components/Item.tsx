@@ -26,7 +26,7 @@ const Item = (props: ItemeState) => {
   };
 
   return (
-    <article className="hover:shadow-2xl hover:scale-[107%] relative flex flex-col justify-center gap-4  w-[100%] h-[350px] p-4 rounded-md font-secondary transition-all duration-200">
+    <article className="hover:shadow-2xl hover:scale-[107%] relative flex flex-col justify-center gap-4  w-[290px] h-[350px] p-4 rounded-md font-secondary transition-all duration-200">
       <div className="card-head transition-all linear duration-300 group ">
         <Link to={`/products/${props.id}`}>
           <img

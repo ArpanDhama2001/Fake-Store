@@ -17,8 +17,7 @@ const Items = () => {
     return <SkeletonItem />;
   }
   if (status === STATUS.error) {
-    // return <h1>Error..</h1>;
-    return <SkeletonItem />;
+    return <h1>Error..</h1>;
   }
   return (
     <>

@@ -25,7 +25,7 @@ const CartItem = (props: ItemeState) => {
               {props.title.substring(0, 20) + "..."}
             </p>
             <div className="flex text-base pt-2">
-              <p className="pr-2">$ {props.price}</p>
+              <p className="pr-2">${props.price}</p>
               <span className="pl-2 border-l-2 border-stone-100">
                 <Ratings rate={props.rating.rate} />
               </span>
