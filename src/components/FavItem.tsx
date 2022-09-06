@@ -3,7 +3,7 @@ import { ItemeState } from "../features/productsSlice";
 import { FaTimes } from "react-icons/fa";
 import Ratings from "./Ratings";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import PrimaryButton from "./PrimaryButton";
+import Button from "./Button";
 import { addToCart, setQty } from "../features/cartSlice";
 
 const FavItem = (props: ItemeState) => {
@@ -53,7 +53,7 @@ const FavItem = (props: ItemeState) => {
                 addToCartClickHandler(requiredItem(props.id), props.id)
               }
             >
-              <PrimaryButton width="full" text="Add to Cart" />
+              <Button primary width="full" text="Add to Cart" />
             </div>
             <button
               onClick={() => dispatch(removeFromFav(props.id))}

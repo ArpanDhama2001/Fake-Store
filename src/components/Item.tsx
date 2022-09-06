@@ -2,14 +2,26 @@ import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { ItemeState } from "../features/productsSlice";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { addToCart, setQty } from "../features/cartSlice";
+import { addToCart, remove, setQty } from "../features/cartSlice";
 import Ratings from "./Ratings";
-import PrimaryButton from "./PrimaryButton";
-import { addToFav } from "../features/favouriteSlice";
+import Button from "./Button";
+import { addToFav, removeFromFav } from "../features/favouriteSlice";
 
 const Item = (props: ItemeState) => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.products);
+  const favProducts = useAppSelector((state) => state.fav);
+  const cartProducts = useAppSelector((state) => state.cart);
+
+  const isFav = (id: number): boolean => {
+    let item = favProducts.value.filter((item) => item.id === id);
+    return item.length ? true : false;
+  };
+
+  const isInCart = (id: number): boolean => {
+    let item = cartProducts.value.filter((item) => item.id === id);
+    return item.length ? true : false;
+  };
 
   const requiredItem = (id: number): ItemeState => {
     let product = products.data.filter((item) => item.id === id)[0];
@@ -17,16 +29,20 @@ const Item = (props: ItemeState) => {
   };
 
   const addToCartClickHandler = (item: ItemeState, id: number): void => {
-    dispatch(addToCart(item));
-    dispatch(setQty(id));
+    if (!isInCart(id)) {
+      dispatch(addToCart(item));
+      dispatch(setQty(id));
+    } else {
+      dispatch(remove(id));
+    }
   };
 
   const addToFavClickHandler = (item: ItemeState, id: number): void => {
-    dispatch(addToFav(item));
+    !isFav(id) ? dispatch(addToFav(item)) : dispatch(removeFromFav(id));
   };
 
   return (
-    <article className="hover:shadow-2xl hover:scale-[107%] relative flex flex-col justify-center gap-4  w-[290px] h-[350px] p-4 rounded-md font-secondary transition-all duration-200">
+    <article className=" hover:scale-[110%] relative flex flex-col justify-center gap-4  min-w-[290px] w-[100%] h-[350px] p-4 rounded-md font-secondary transition-all duration-200">
       <div className="card-head transition-all linear duration-300 group ">
         <Link to={`/products/${props.id}`}>
           <img
@@ -39,7 +55,9 @@ const Item = (props: ItemeState) => {
           onClick={() => {
             addToFavClickHandler(requiredItem(props.id), props.id);
           }}
-          className={`z-1 absolute top-6 right-7 scale-[140%]  hover:cursor-pointer`}
+          className={`z-1 ${
+            isFav(props.id) ? "text-red-500" : "text-neutral-400"
+          } absolute top-6 right-7 scale-[140%] active:scale-110 hover:cursor-pointer`}
         >
           <FaHeart />
         </span>
@@ -66,7 +84,11 @@ const Item = (props: ItemeState) => {
         }}
         className="flex gap-4"
       >
-        <PrimaryButton width="full" text="Add to Cart" />
+        {!isInCart(props.id) ? (
+          <Button primary width="full" text="Add to Cart" />
+        ) : (
+          <Button primary={false} width="full" text="Remove from Cart" />
+        )}
       </div>
     </article>
   );

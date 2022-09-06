@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../store";
 import { totalPrice, deliveryDate, checkPromoCode } from "../utilities";
-import PrimaryButton from "./PrimaryButton";
+import Button from "./Button";
 
 const CartSummary = () => {
   const cart = useSelector((state: RootState) => state.cart);
@@ -134,7 +134,7 @@ const CartSummary = () => {
           </h2>
         </div>
         <div>
-          <PrimaryButton width="full" text="Proceed to checkout" />
+          <Button primary width="full" text="Proceed to checkout" />
         </div>
         <Link to="/">
           <button className="w-full py-[10px] px-4 border border-neutral-200 hover:bg-neutral-100 shadow-sm rounded-lg -mt-2 active:scale-[98%]">
