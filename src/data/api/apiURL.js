@@ -1,7 +1,7 @@
 export const getAllProductURL = () => {
   return "https://fakestoreapi.com/products";
 };
-export const getProductURL = (id) => {
+export const getProduct = (id) => {
   return `https://fakestoreapi.com/products/${id}`;
 };
 

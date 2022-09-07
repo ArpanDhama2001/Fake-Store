@@ -55,9 +55,9 @@ const Item = (props: ItemeState) => {
           onClick={() => {
             addToFavClickHandler(requiredItem(props.id), props.id);
           }}
-          className={`z-1 ${
+          className={`z-1 p-2 ${
             isFav(props.id) ? "text-red-500" : "text-neutral-400"
-          } absolute top-6 right-7 scale-[140%] active:scale-110 hover:cursor-pointer`}
+          } absolute top-4 right-4 scale-[140%] active:scale-110 hover:cursor-pointer`}
         >
           <FaHeart />
         </span>

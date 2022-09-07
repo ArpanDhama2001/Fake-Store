@@ -1,5 +1,6 @@
 import React from "react";
 import { FaAngleDown, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { BiPackage } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { RootState } from "../store";
@@ -20,8 +21,11 @@ const Navbar = () => {
     <>
       <nav className="z-10 flex justify-center items-center h-[60px] w-[100%] bg-primary text-white sticky top-0 mb-4">
         <div className="flex justify-between items-center w-[80%] font-secondary">
-          <Link to="/" className="text-xl border-y-2 border-white w-[112px]">
-            fake <span className="font-secondary text-2xl">Store</span>
+          <Link to="/" className="text-xl flex gap-2">
+            <span className="font-secondary text-2xl">
+              <BiPackage />
+            </span>
+            <p>fakeStore</p>
           </Link>
           <ul className="flex gap-8 items-center ">
             <li>
