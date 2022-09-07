@@ -6,7 +6,7 @@ const EmptyFavList = () => {
     <section className="p-4 h-[100%] w-[100%] flex justify-center items-center">
       <div className="font-secondary flex flex-col items-center">
         <div className="text-center mb-4 text-neutral-400">
-          <h2 className="text-6xl lg:text-8xl">--SVG--</h2>
+          <h2 className="mb-4 text-6xl lg:text-8xl">-_-</h2>
           <h4 className="">There's so much space in here!</h4>
           <h4 className="">It could be filled with your great ideas.</h4>
         </div>

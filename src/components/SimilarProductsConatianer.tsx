@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { ItemeState } from "../features/productsSlice";
 import { addSimilarProducts } from "../features/similarProductsSlice";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { getSimilarProducts } from "../utilities/getSimilarProducts";
@@ -7,12 +8,20 @@ import Item from "./Item";
 const SimilarProductsConatianer = () => {
   const dispatch = useAppDispatch();
   let { value: cart } = useAppSelector((state) => state.cart);
+  let { value: favItems } = useAppSelector((state) => state.fav);
   let { data: products } = useAppSelector((state) => state.products);
   let { data: similarP } = useAppSelector((state) => state.similarProducts);
 
+  let newArr: ItemeState[] = cart.concat(favItems);
+
   useEffect(() => {
-    dispatch(addSimilarProducts(getSimilarProducts(products, cart)));
+    dispatch(addSimilarProducts(getSimilarProducts(products, newArr)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (!similarP.length) {
+    similarP = products.slice(0, 12);
+  }
 
   return (
     <section className=" overflow-auto w-[80%] bg-white rounded-lg mt-4 p-6 mx-auto divide-y divide-neutral-200">

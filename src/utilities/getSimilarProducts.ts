@@ -11,7 +11,7 @@ const interestedCategories = (cart: ItemeState[]) => {
   return cat;
 };
 
-function shuffle(array: any[]) {
+export const shuffle = (array: any[]) => {
   let currentIndex = array.length,
     randomIndex;
 
@@ -29,7 +29,7 @@ function shuffle(array: any[]) {
   }
 
   return array;
-}
+};
 
 const reduceTo10 = (oldArr: ItemeState[]) => {
   if (oldArr.length > 10) {
