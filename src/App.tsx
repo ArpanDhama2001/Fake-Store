@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import CartPage from "./pages/CartPage";
 import Product from "./pages/ProductPage";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import FaviouritesPage from "./pages/FaviouritesPage";
 function App() {
   return (

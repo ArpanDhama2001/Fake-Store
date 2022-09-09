@@ -19,7 +19,7 @@ const Button = ({
           : "hover:opacity-90"
       } ${
         primary
-          ? "bg-primary text-white"
+          ? "bg-gradient-to-r to-gradient1 from-gradient2 text-white"
           : "bg-white text-neutral-400 border-2 border-neutral-200"
       } py-[10px] px-4  rounded-lg font-secondary active:scale-[98%]`}
     >

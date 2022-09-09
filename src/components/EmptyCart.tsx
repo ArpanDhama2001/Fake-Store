@@ -10,7 +10,7 @@ const EmptyCart = () => {
           <h4 className="">Looks like your cart is Empty</h4>
         </div>
         <Link to="/">
-          <button className="w-[300px] flex gap-2 items-center justify-center py-[10px] px-4 bg-primary hover:opacity-90 text-white rounded-lg">
+          <button className="w-[300px] flex gap-2 items-center justify-center py-[10px] px-4 bg-gradient-to-r to-gradient1 from-gradient2 hover:opacity-90 text-white rounded-lg">
             Continue shoping <FaArrowRight />
           </button>
         </Link>
