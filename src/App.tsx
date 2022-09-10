@@ -4,6 +4,7 @@ import CartPage from "./pages/CartPage";
 import Product from "./pages/ProductPage";
 import Navbar from "./components/navbar/Navbar";
 import FaviouritesPage from "./pages/FaviouritesPage";
+import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ function App() {
         <Route path="/favourite" element={<FaviouritesPage />} />
         <Route path="/cart" element={<CartPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
