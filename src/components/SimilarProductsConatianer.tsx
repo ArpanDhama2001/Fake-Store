@@ -24,7 +24,11 @@ const SimilarProductsConatianer = () => {
   }
 
   return (
-    <section className=" overflow-auto w-[80%] bg-white rounded-lg mt-4 p-6 mx-auto divide-y divide-neutral-200">
+    <section
+      className={`${
+        similarP.length ? "" : "hidden"
+      } overflow-auto w-[80%] bg-white rounded-lg mt-4 p-6 mx-auto divide-y divide-neutral-200`}
+    >
       <h2 className="p-4 font-secondary text-xl text-neutral-700 ">
         You might be interested in:
       </h2>
