@@ -21,8 +21,8 @@ const FavItem = (props: ItemeState) => {
   };
 
   return (
-    <article className="py-4 flex items-center last:border-none border-b border-gray-200 text-neutral-400 font-secondary">
-      <div className="item-image w-[300px]">
+    <article className="py-4 flex flex-col sm:flex-row items-center last:border-none border-b border-gray-200 text-neutral-400 font-secondary">
+      <div className="item-image w-[200px] max-w-[200px] sm:w-[300px] sm:max-w-none">
         <img
           src={props.image}
           alt={props.title}
@@ -30,12 +30,12 @@ const FavItem = (props: ItemeState) => {
         />
       </div>
       <div className="item-body flex flex-grow gap-4 flex-col">
-        <div className="item-body-head pl-4 flex justify-between">
+        <div className="item-body-head pl-4 flex justify-center sm:justify-between">
           <div>
-            <p className="font-secondary text-xl text-neutral-600 text-[18px]">
+            <p className="font-secondary text-center sm:text-left text-xl text-neutral-600 text-[18px]">
               {props.title}
             </p>
-            <div className="flex text-base pt-2">
+            <div className="flex justify-center sm:justify-start text-base pt-2">
               <p className="pr-2">${props.price}</p>
               <span className="px-2 border-x-2 border-stone-100">
                 <Ratings rate={props.rating.rate} />
@@ -46,7 +46,7 @@ const FavItem = (props: ItemeState) => {
             </div>
           </div>
         </div>
-        <div className="item-total flex justify-between items-center pl-4">
+        <div className="item-total flex justify-center sm:justify-between items-center pl-4">
           <div className="flex gap-2 items-center">
             <div
               onClick={() =>
