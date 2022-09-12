@@ -19,9 +19,9 @@ const Button = ({
           : "hover:opacity-90"
       } ${
         primary
-          ? "bg-gradient-to-r to-gradient1 from-gradient2 text-white"
-          : "bg-white text-neutral-400 border-2 border-neutral-200"
-      } py-[10px] px-4  rounded-lg font-secondary active:scale-[98%]`}
+          ? "border-2 border-black text-black"
+          : " text-neutral-400 border-2 border-neutral-200"
+      } bg-white py-[10px] px-4  rounded-full font-secondary active:scale-[98%] hover:border-x-[3px] transition-all duration-200`}
     >
       {text}
     </button>

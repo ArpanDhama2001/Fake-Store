@@ -14,6 +14,7 @@ module.exports = {
         accentHover: "#DBE2EF",
         gradient1: "#112D4E",
         gradient2: "#112D4E",
+        logo: "#fc9403",
       },
       animation: {
         pulse: "pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite",

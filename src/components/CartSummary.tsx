@@ -137,9 +137,7 @@ const CartSummary = () => {
           <Button primary width="full" text="Proceed to checkout" />
         </div>
         <Link to="/">
-          <button className="w-full py-[10px] px-4 border border-neutral-200 hover:bg-neutral-100 shadow-sm rounded-lg -mt-2 active:scale-[98%]">
-            Continue shopping
-          </button>
+          <Button primary={false} text="Continue shopping" width="full" />
         </Link>
       </article>
     </section>

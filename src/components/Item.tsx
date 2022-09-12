@@ -70,7 +70,9 @@ const Item = (props: ItemeState) => {
               ? props.title.substring(0, 25) + "..."
               : props.title}
           </p>
-          <p className="text-neutral-400">{props.category}</p>
+          <p className="px-2 bg-neutral-200 text-neutral-500 w-fit mx-auto my-1">
+            {props.category}
+          </p>
         </div>
         <div className="flex gap-10 justify-around w-[80%]">
           <Ratings rating={props.rating} />
