@@ -57,7 +57,7 @@ const FavItem = (props: ItemeState) => {
             </div>
             <button
               onClick={() => dispatch(removeFromFav(props.id))}
-              className="flex gap-2 items-center justify-center px-4 py-[10px] cursor-pointer hover:cursor-pointer border-2 border-neutral-200 rounded-lg active:scale-[90%]"
+              className="flex gap-2 items-center justify-center rounded-full px-4 py-[10px] cursor-pointer hover:cursor-pointer border-2 border-neutral-200 active:scale-[90%]"
             >
               <FaTimes /> Remove
             </button>

@@ -30,7 +30,7 @@ const MobileNavbar = () => {
     <>
       <nav
         ref={navRef}
-        className="z-10 flex justify-between items-center px-4 sticky top-0 lg:hidden h-[60px] w-full  bg-gradient-to-r from-gradient1 to-gradient2 text-white"
+        className="z-10 flex justify-between items-center px-4 sticky top-0 md:hidden h-[60px] w-full  bg-white text-black border-b-2 border-neutral-200"
       >
         <div className="flex items-center justify-start gap-4">
           <article
@@ -40,24 +40,24 @@ const MobileNavbar = () => {
             className="menu-btn flex gap-2 flex-col cursor-pointer p-2"
           >
             <div
-              className={`line-1 h-[2px] w-[30px] bg-white transition-transform duration-500 ${
+              className={`line-1 h-[2px] w-[30px] bg-black transition-transform duration-500 ${
                 open ? "rotate-45 translate-y-[10px]" : ""
               }`}
             ></div>
             <div
-              className={`line-2 h-[2px] w-[30px] bg-white transition-all duration-500 ${
+              className={`line-2 h-[2px] w-[30px] bg-black transition-all duration-500 ${
                 open ? " opacity-0" : "opacity-100"
               }`}
             ></div>
             <div
-              className={`line-3 h-[2px] w-[30px] bg-white transition-transform duration-500 ${
+              className={`line-3 h-[2px] w-[30px] bg-black transition-transform duration-500 ${
                 open ? "-rotate-45 -translate-y-[10px]" : ""
               }`}
             ></div>
           </article>
 
           <article className="logo">
-            <Link to="/" className="text-xl flex gap-2 items-center">
+            <Link to="/" className="text-xl flex items-center gap-2 text-logo">
               <span className="font-secondary text-2xl">
                 <BiPackage />
               </span>
@@ -74,7 +74,7 @@ const MobileNavbar = () => {
               <div className="group-hover:opactiy-100 scale-[140%]">
                 <FaShoppingCart />
               </div>
-              <span className="absolute -top-4 -right-4 flex items-center justify-center rounded-full bg-accent text-white opacity-100 h-full w-full p-[11px] text-sm">
+              <span className="absolute -top-4 -right-4 flex items-center justify-center rounded-full bg-logo text-black opacity-100 h-full w-full p-[11px] text-sm">
                 {total}
               </span>
             </Link>

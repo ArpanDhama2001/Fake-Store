@@ -1,0 +1,25 @@
+.cat-btn {
+  position: relative;
+  width: 150px;
+  padding: 2px 4px;
+  text-align: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.cat-btn::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0.1rem;
+  width: 100%;
+  background: #fc9403;
+  transform: scale(0, 1);
+  transition: all 0.3s ease;
+}
+
+.cat-btn:hover::after {
+  transform: scale(1, 1);
+}

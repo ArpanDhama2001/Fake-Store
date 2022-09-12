@@ -10,11 +10,11 @@ interface PropsState {
 function Sidebar(props: PropsState) {
   return (
     <div
-      className={`py-4 ${
+      className={`py-4 shadow-[20px_35px_60px_-15px_rgba(0,0,0,0.3)] ${
         props.open
           ? "translate-x-0 opacity-100"
           : "translate-x-[-310px] opacity-0"
-      } text-white w-[300px] h-[100vh] bg-gradient-to-br from-gradient1 to-gradient2 fixed z-50 font-secondary transition-all duration-300 divide-y `}
+      } text-black w-[300px] h-[100vh] max-h-[100vh] overflow-auto bg-white fixed z-50 font-secondary transition-all duration-300 divide-y `}
     >
       <Link
         onClick={() => props.setOpen(false)}
