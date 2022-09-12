@@ -1,7 +1,6 @@
 import { remove } from "../features/cartSlice";
 import { ItemeState } from "../features/productsSlice";
 import { FaTrash } from "react-icons/fa";
-import React from "react";
 import ItemQty from "./ItemQty";
 import Ratings from "./Ratings";
 import { useDispatch } from "react-redux";
@@ -27,7 +26,7 @@ const CartItem = (props: ItemeState) => {
             <div className="flex text-base pt-2">
               <p className="pr-2">${props.price}</p>
               <span className="pl-2 border-l-2 border-stone-100">
-                <Ratings rate={props.rating.rate} />
+                <Ratings rating={props.rating} />
               </span>
             </div>
           </div>

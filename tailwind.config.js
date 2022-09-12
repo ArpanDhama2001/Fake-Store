@@ -12,8 +12,8 @@ module.exports = {
         secondary: "#F9F7F7",
         accent: "#3F72AF",
         accentHover: "#DBE2EF",
-        gradient1: "#ea580c",
-        gradient2: "#ca8a04",
+        gradient1: "#112D4E",
+        gradient2: "#112D4E",
       },
       animation: {
         pulse: "pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite",

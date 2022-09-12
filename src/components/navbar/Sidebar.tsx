@@ -11,8 +11,10 @@ function Sidebar(props: PropsState) {
   return (
     <div
       className={`py-4 ${
-        props.open ? "translate-x-0" : "translate-x-[-310px]"
-      } text-white w-[300px] h-[100vh] bg-gradient-to-br from-gradient1 to-gradient2 fixed z-50 font-secondary transition-transform duration-300 divide-y `}
+        props.open
+          ? "translate-x-0 opacity-100"
+          : "translate-x-[-310px] opacity-0"
+      } text-white w-[300px] h-[100vh] bg-gradient-to-br from-gradient1 to-gradient2 fixed z-50 font-secondary transition-all duration-300 divide-y `}
     >
       <Link
         onClick={() => props.setOpen(false)}

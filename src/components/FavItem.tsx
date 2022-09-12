@@ -38,7 +38,7 @@ const FavItem = (props: ItemeState) => {
             <div className="flex justify-center sm:justify-start text-base pt-2">
               <p className="pr-2">${props.price}</p>
               <span className="px-2 border-x-2 border-stone-100">
-                <Ratings rate={props.rating.rate} />
+                <Ratings rating={props.rating} />
               </span>
               <button className="ml-2 px-2 font-primary text-neutral-500 bg-neutral-200 ">
                 {props.category}
