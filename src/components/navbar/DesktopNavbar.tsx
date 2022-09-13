@@ -40,44 +40,6 @@ const DesktopNavbar = () => {
               </Link>
             </li>
             <li>
-              <button
-                onClick={() => {
-                  setShowCategories(!showCategories);
-                }}
-                className="relative flex items-center gap-1 opacity-70 hover:opacity-100 focus:opacity-100"
-              >
-                Categories <FaAngleDown />
-              </button>
-              {showCategories && (
-                <ul className="absolute bg-white text-black flex flex-col gap-2 mt-[5px] p-2 shadow-lg rounded-lg">
-                  <Link
-                    to={`/category/${"electronics"}`}
-                    className="hover:bg-gray-200 px-2 transition-all linear duration-100"
-                  >
-                    Electronics
-                  </Link>
-                  <Link
-                    to={`/category/${"jewelery"}`}
-                    className="hover:bg-gray-200 px-2 transition-all linear duration-100"
-                  >
-                    Jewelery
-                  </Link>
-                  <Link
-                    to={`/category/${"men's clothing"}`}
-                    className="hover:bg-gray-200 px-2 transition-all linear duration-100"
-                  >
-                    Men's Clothing
-                  </Link>
-                  <Link
-                    to={`/category/${"women's clothing"}`}
-                    className="hover:bg-gray-200 px-2 transition-all linear duration-100"
-                  >
-                    Women's Clothing
-                  </Link>
-                </ul>
-              )}
-            </li>
-            <li>
               <Link
                 to="/favourite"
                 className={`${

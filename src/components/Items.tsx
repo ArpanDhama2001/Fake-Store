@@ -21,21 +21,23 @@ const Items = () => {
   }
   return (
     <>
-      <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center bg-white p-4 shadow-2xl rounded-lg">
-        {items?.map((item: ItemeState): JSX.Element => {
-          return (
-            <Item
-              key={item.id}
-              title={item.title}
-              image={item.image}
-              price={item.price}
-              id={item.id}
-              qty={item.qty}
-              category={item.category}
-              rating={item.rating}
-            />
-          );
-        })}
+      <section className=" bg-white p-4 rounded-lg">
+        <div className="mx-auto w-full md:w-[80%] grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center">
+          {items?.map((item: ItemeState): JSX.Element => {
+            return (
+              <Item
+                key={item.id}
+                title={item.title}
+                image={item.image}
+                price={item.price}
+                id={item.id}
+                qty={item.qty}
+                category={item.category}
+                rating={item.rating}
+              />
+            );
+          })}
+        </div>
       </section>
     </>
   );

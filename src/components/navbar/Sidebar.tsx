@@ -28,16 +28,22 @@ function Sidebar(props: PropsState) {
       </Link>
       <div className="p-4 flex flex-col gap-4">
         <h2 className="text-xl">Top Categories For You</h2>
-        <Link onClick={() => props.setOpen(false)} to="/">
+        <Link
+          onClick={() => props.setOpen(false)}
+          to="/category/men's clothing"
+        >
           Men's Clothing
         </Link>
-        <Link onClick={() => props.setOpen(false)} to="/">
+        <Link
+          onClick={() => props.setOpen(false)}
+          to="/category/women's clothing"
+        >
           Women's Clothing
         </Link>
-        <Link onClick={() => props.setOpen(false)} to="/">
+        <Link onClick={() => props.setOpen(false)} to="/category/electronics">
           Electronics
         </Link>
-        <Link onClick={() => props.setOpen(false)} to="/">
+        <Link onClick={() => props.setOpen(false)} to="/category/jewlery">
           Jewelery
         </Link>
       </div>
