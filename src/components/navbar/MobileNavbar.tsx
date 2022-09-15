@@ -67,14 +67,12 @@ const MobileNavbar = () => {
         </div>
 
         <div className="flex gap-4">
-          <article className="avatar">avatar</article>
-
           <article className="cart relative top-1 right-1">
-            <Link to="/cart">
-              <div className="group-hover:opactiy-100 scale-[140%]">
+            <Link to="/cart" className="">
+              <div className="group-hover:opactiy-100 scale-[140%] mr-2">
                 <FaShoppingCart />
               </div>
-              <span className="absolute -top-4 -right-4 flex items-center justify-center rounded-full bg-logo text-black opacity-100 h-full w-full p-[11px] text-sm">
+              <span className="absolute -top-4 -right-3 flex items-center justify-center rounded-full bg-logo text-black opacity-100 h-full w-full p-[11px] text-sm">
                 {total}
               </span>
             </Link>

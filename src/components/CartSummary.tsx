@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { clearCart } from "../features/cartSlice";
+import { useAppDispatch } from "../hooks";
 import { RootState } from "../store";
 import { totalPrice, deliveryDate, checkPromoCode } from "../utilities";
 import Button from "./Button";
 
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const CartSummary = () => {
   const cart = useSelector((state: RootState) => state.cart);
+  const dispatch = useAppDispatch();
 
   const [focus, setFocus] = useState<number>(0);
   const [deliveryCharge, setDeliveryCharge] = useState<number>(0);
@@ -16,7 +22,6 @@ const CartSummary = () => {
   >("pending");
   let [dis, setDis] = useState<number>(0);
   const [subTotal, setSubTotal] = useState<number>(totalPrice());
-  // const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
     setSubTotal(totalPrice());
@@ -30,6 +35,20 @@ const CartSummary = () => {
     discount === "correct"
       ? setDis(Math.round(subTotal * 0.2 * 100) / 100)
       : setDis(0);
+  };
+
+  const notify = () => {
+    toast.success("Purchase Successfull", {
+      toastId: "1",
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    dispatch(clearCart());
   };
 
   return (
@@ -133,8 +152,20 @@ const CartSummary = () => {
               Math.round(deliveryCharge * 100) / 100}
           </h2>
         </div>
-        <div>
+        <div onClick={() => notify()}>
           <Button primary width="full" text="Proceed to checkout" />
+          <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            transition={Slide}
+          />
         </div>
         <Link to="/">
           <Button primary={false} text="Continue shopping" width="full" />

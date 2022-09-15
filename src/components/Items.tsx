@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../hooks";
 import Item from "./Item";
 import { STATUS } from "../features/productsSlice";
 import SkeletonItem from "./SkeletonItem";
+import Error from "./Error";
 
 const Items = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +18,7 @@ const Items = () => {
     return <SkeletonItem />;
   }
   if (status === STATUS.error) {
-    return <h1>Error..</h1>;
+    return <Error />;
   }
   return (
     <>

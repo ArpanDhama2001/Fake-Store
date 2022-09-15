@@ -65,9 +65,6 @@ const DesktopNavbar = () => {
                 </span>
               </Link>
             </li>
-            <li className="border-[2px] border-neutral-300 py-1 px-2 rounded-lg hover:scale-105 ">
-              <button>Login | Signup</button>
-            </li>
           </ul>
         </div>
       </div>
