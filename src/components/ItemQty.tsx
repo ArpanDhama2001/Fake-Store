@@ -15,17 +15,15 @@ const ItemQty = (props: Props) => {
   const [quantity, setQuantity] = useState<number>(1);
 
   const productQty = () => {
+    // eslint-disable-next-line array-callback-return
     cart.value.map((item) => {
       if (item.id === props.id) setQuantity(item.qty);
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuantity(Number(e.target.value));
-  };
-
   useEffect(() => {
     productQty();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart]);
 
   return (

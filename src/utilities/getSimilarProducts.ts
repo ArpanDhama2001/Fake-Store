@@ -2,6 +2,7 @@ import { ItemeState } from "../features/productsSlice";
 
 const interestedCategories = (cart: ItemeState[]) => {
   let cat: any[] = [];
+  // eslint-disable-next-line array-callback-return
   cart.map((item) => {
     if (!cat.includes(item.category)) {
       cat.push(item.category);

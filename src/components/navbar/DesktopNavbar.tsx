@@ -1,6 +1,6 @@
 import React from "react";
 import { BiPackage } from "react-icons/bi";
-import { FaAngleDown, FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 import { useAppSelector } from "../../hooks";
@@ -10,7 +10,6 @@ import Categories from "./Categories";
 const DesktopNavbar = () => {
   const cart = useAppSelector((state) => state.cart);
 
-  const [showCategories, setShowCategories] = React.useState(false);
   const [total, setTotal] = React.useState<string>("0");
   const { pathname } = useLocation();
 

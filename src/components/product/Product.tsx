@@ -64,7 +64,7 @@ function Product({ id }: { id?: string }) {
       }
     }
     fetchProduct();
-  }, []);
+  }, [params.productId]);
 
   if (loading) {
     return <SkeletonProduct />;
