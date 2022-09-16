@@ -28,6 +28,7 @@ export const cartSlice = createSlice({
       );
     },
     change: (state, action: PayloadAction<{ id: number; type: string }>) => {
+      // eslint-disable-next-line array-callback-return
       state.value.filter((item) => {
         if (item.id === action.payload.id) {
           if (action.payload.type === "increment" && item.qty < 10) {
